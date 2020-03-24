@@ -14,7 +14,7 @@ $files = scandir('.');
 //foreach($allFiles as $files) {
 	foreach ($files as $f){
 		$name = join(DIRECTORY_SEPARATOR, [getcwd(), $f]);
-
+		debug_to_console(getcwd());
 		// note that we multiply times by 1000 because PHP is in seconds
 		// others expect milliseconds
 		if ($f[0] != '.' && is_dir($name)){
@@ -30,7 +30,13 @@ $files = scandir('.');
 
 echo json_encode($dirs);
 
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
 
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
 
 
 
