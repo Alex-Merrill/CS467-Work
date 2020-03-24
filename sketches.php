@@ -1,7 +1,13 @@
 <?php
 
-$path = 'sketches';
-$files = scandir($path);
+$path1 = 'Assignments';
+$files1 = scandir($path1);
+$path2 = 'Practicals';
+$files2 = scandir($path2);
+$path3 = 'Practice Sketches';
+$files3 = scandir($path3);
+
+$files = array_merge($files1, $files2, $files3);
 
 foreach ($files as $f){
 	$name = join(DIRECTORY_SEPARATOR, [$path, $f]);
