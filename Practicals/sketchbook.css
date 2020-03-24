@@ -1,0 +1,23 @@
+body {
+  width:500px;
+  margin: auto;
+}
+
+#sketches table {
+  width: 100%;
+}
+
+
+#sketches .name{
+  font-weight: bold;
+  font-size: larger;
+}
+
+#sketches .name a{
+  text-decoration: none;
+}
+
+#sketches .date{
+  font-size: 80%;
+  text-align:right;
+}
