@@ -6,8 +6,9 @@ $path2 = 'Practicals';
 $files2 = scandir($path2);
 $path3 = 'Practice Sketches';
 $files3 = scandir($path3);
-console.log($files1);
 $files = array_merge($files1, $files2, $files3);
+console.log("dirPaths = " + $files);
+echo '<script>console.log(dirPaths = + '$files')</script>';
 
 foreach ($files as $f){
 	$name = join(DIRECTORY_SEPARATOR, [$path, $f]);
