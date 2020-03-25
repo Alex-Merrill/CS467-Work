@@ -20,7 +20,7 @@
             const table = document.createElement('table');
 
             sketches.forEach(sketch => {
-                
+
                 const name = sketch.name.split('/').pop();
                 const date = new Date(sketch.mtime)
                 .toISOString()
@@ -55,7 +55,8 @@
             if (!response.ok){
                 sketchDiv.textContent = 'Unable to fetch sketch collection: ' + response.statusText;
             }
-            return response.json();
+            console.log(response.json());
+            return response;//.json();
         })
         .then(data => {
             listSketches(data);
