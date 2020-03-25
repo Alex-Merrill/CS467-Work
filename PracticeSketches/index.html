@@ -15,7 +15,6 @@
 
     const listSketches = (sketches) => {
         sketches.sort((e1, e2) => parseInt(e2.ctime) - parseInt(e1.ctime));
-        console.log(sketches);
 
         const table = document.createElement('table');
         sketches.forEach(sketch => {
