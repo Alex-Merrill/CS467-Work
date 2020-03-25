@@ -10,52 +10,57 @@
     <hr />
     <div id="sketches">
     </div>
+
     <script type="text/javascript">
-    const sketchDiv = document.getElementById('sketches');
+        const sketchDiv = document.getElementById('sketches');
 
-    const listSketches = (sketches) => {
-        sketches.sort((e1, e2) => parseInt(e2.ctime) - parseInt(e1.ctime));
-        const table = document.createElement('table');
-        sketches.forEach(sketch => {
-            const name = sketch.name.split('/').pop();
-            const date = new Date(sketch.mtime)
-            .toISOString()
-            .split('T')[0];
+        const listSketches = (sketches) => {
+            sketches.sort((e1, e2) => parseInt(e2.ctime) - parseInt(e1.ctime));
 
-            const link = document.createElement('a');
-            link.href = sketch.name;
-            link.innerHTML = name;
+            const table = document.createElement('table');
 
-            const row = document.createElement('tr');
-            let cell = document.createElement('td');
-            cell.className = 'name';
-            cell.appendChild(link);
-            row.appendChild(cell);
+            sketches.forEach(sketch => {
+                
+                const name = sketch.name.split('/').pop();
+                const date = new Date(sketch.mtime)
+                .toISOString()
+                .split('T')[0];
 
-            cell = document.createElement('td');
-            cell.className = 'date';
-            cell.innerHTML = date;
-            row.appendChild(cell);
+                const link = document.createElement('a');
+                link.href = sketch.name;
+                link.innerHTML = name;
 
-            table.appendChild(row);
+                const row = document.createElement('tr');
+                let cell = document.createElement('td');
+                cell.className = 'name';
+                cell.appendChild(link);
+                row.appendChild(cell);
 
+                cell = document.createElement('td');
+                cell.className = 'date';
+                cell.innerHTML = date;
+                row.appendChild(cell);
+
+                table.appendChild(row);
+
+            });
+            sketchDiv.appendChild(table);
+        };
+
+
+
+
+
+        fetch('sketches.php').then(response => {
+            if (!response.ok){
+                sketchDiv.textContent = 'Unable to fetch sketch collection: ' + response.statusText;
+            }
+            return response.json();
+        })
+        .then(data => {
+            listSketches(data);
         });
-        sketchDiv.appendChild(table);
-    };
+    </script>
 
-
-
-
-
-    fetch('sketches.php').then(response=>{
-      if (! response.ok){
-        sketchDiv.textContent = 'Unable to fetch sketch collection: ' + response.statusText;
-      }
-      return response.json();
-    })
-    .then(data =>{
-      listSketches(data);
-    });
-  </script>
 </body>
 </html>

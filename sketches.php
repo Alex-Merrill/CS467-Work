@@ -1,17 +1,7 @@
 <?php
 
-// $paths = array('Assignments', 'Practicals', 'PracticeSketches');
-//
-// $files1 = scandir($paths[0]);
-// $files2 = scandir($paths[1]);
-// $files3 = scandir($paths[2]);
-//
-// $allFiles = array($files1, $files2, $files3);
-// $iter = 0;
-
 $files = scandir('.');
 
-//foreach($allFiles as $files) {
 	foreach ($files as $f){
 		$name = $f;
 
@@ -25,14 +15,7 @@ $files = scandir('.');
 			];
 		}
 	}
-	//$iter += 1;
-//}
 
 echo json_encode($dirs);
-
-
-
-
-
 
 ?>
