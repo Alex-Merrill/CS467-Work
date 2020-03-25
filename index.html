@@ -48,20 +48,17 @@
         };
 
 
-
-
-
         fetch('sketches.php').then(response => {
             if (!response.ok){
                 sketchDiv.textContent = 'Unable to fetch sketch collection: ' + response.statusText;
             }
-            console.log(response.json());
-            return response;//.json();
+            console.log(response);
+            return response.json();
         })
         .then(data => {
             listSketches(data);
         });
-    </script>
 
+    </script>
 </body>
 </html>
