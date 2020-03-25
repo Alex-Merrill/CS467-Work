@@ -51,6 +51,7 @@
       if (! response.ok){
         sketchDiv.textContent = 'Unable to fetch sketch collection: ' + response.statusText;
       }
+      console.log(response.json());
       return response.json();
     })
     .then(data =>{
