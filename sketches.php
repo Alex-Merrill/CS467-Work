@@ -13,7 +13,6 @@ $files = scandir('.');
 
 //foreach($allFiles as $files) {
 	foreach ($files as $f){
-		//$name = join(DIRECTORY_SEPARATOR, [getcwd(), $f]);
 		$name = $f;
 
 		// note that we multiply times by 1000 because PHP is in seconds
