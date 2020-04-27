@@ -6,7 +6,6 @@
 */
 function gameOfLife(cellSize, paintedH){
 
-
     /**
     * This class represents a single cell of the CA
     */
