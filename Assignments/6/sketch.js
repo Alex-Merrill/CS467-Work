@@ -7,6 +7,8 @@
 
 const NUM_AGENTS = 20;
 let agents = [];
+let targets = [];
+let view = "A";
 
 let bee;
 let flower1;
@@ -35,26 +37,50 @@ function setup() {
         agents.push(new Agent(x, y));
     }
 
+    targets.push(createVector(100, 100),
+                 createVector(700, 700),
+                 createVector(100, 700),
+                 createVector(700, 100),
+                 createVector(400, 400));
+
 }
 
 function draw() {
-    background(255);
-
-    //draw flowers
-    drawFlowers();
-
-    for(let agent of agents) {
-        agent.applyBehavior(agents, "", "", 150, 100, 50, "", "", true);
-        //agent.applyBehavior(agents, createVector(mouseX, mouseY), "", "", "", "", 500, "");
-        agent.applyBehavior(agents, createVector(100, 100), "", "", "", "", 100, "", false);
-        agent.applyBehavior(agents, createVector(700, 700), "", "", "", "", 100, "", false);
-        agent.applyBehavior(agents, createVector(100, 700), "", "", "", "", 100, "", false);
-        agent.applyBehavior(agents, createVector(700, 100), "", "", "", "", 100, "", false);
-        agent.applyBehavior(agents, createVector(400, 400), "", "", "", "", 100, "", false);
-        agent.update();
-        agent.draw();
+    if(view === "A") {
+        background(126, 200, 80);
     }
 
+    //draw flowers
+    if(view === "A") {
+        drawFlowers();
+    }
+
+    for(let agent of agents) {
+        agent.applyBehavior(agents, "", "", 100, 100, 100, "", "", true);
+        agent.applyBehavior(agents, targets[0], "", "", "", "", 150, "", false);
+        agent.applyBehavior(agents, targets[1], "", "", "", "", 150, "", false);
+        agent.applyBehavior(agents, targets[2], "", "", "", "", 150, "", false);
+        agent.applyBehavior(agents, targets[3], "", "", "", "", 150, "", false);
+        agent.applyBehavior(agents, targets[4], "", "", "", "", 150, "", false);
+        agent.update();
+        if(view === "A") {
+            agent.drawA();
+        } else {
+            agent.drawC(targets);
+        }
+    }
+
+}
+
+function keyPressed() {
+    if(key === "v") {
+        clear();
+        if(view === "A") {
+            view = "C";
+        } else if(view === "C"){
+            view = "A";
+        }
+    }
 }
 
 //draws flowers
@@ -133,10 +159,10 @@ class Agent{
         }
 
         //manipulates behavior forces
-        dist.mult(1.5);
-        coh.mult(.75);
+        dist.mult(4);
+        coh.mult(1);
         al.mult(1);
-        sek.mult(1.5);
+        sek.mult(2);
         fle.mult(1);
         wan.mult(1);
 
@@ -224,8 +250,6 @@ class Agent{
 
     //applies random force to birds to simulate wandering
     wander() {
-        //create random force in direction of heading give or take 30 deg
-        //apply force
         let heading = this.velocity.heading();
         let randAng = random(heading - PI/10, heading + PI/10);
         let newVel = p5.Vector.fromAngle(randAng);
@@ -259,8 +283,8 @@ class Agent{
             }
             //slows agent if closer than 100
             desired.normalize();
-            d = map(d, 0, 200, 0, this.maxSpeed);
-            d = constrain(d, 0, this.maxSpeed);
+            d = map(d, 0, 200, this.maxSpeed/2, this.maxSpeed);
+            d = constrain(d, this.maxSpeed/2, this.maxSpeed);
             desired.mult(d);
             //creates proper force
             let steerForce = p5.Vector.sub(desired, this.velocity);
@@ -310,14 +334,57 @@ class Agent{
         }
     }
 
-    draw(){
-        stroke(0);
-        fill(200);
+    drawA(){
         push();
         imageMode(CENTER);
         translate(this.position.x, this.position.y);
         rotate(this.velocity.heading()+PI*(6/5));
         image(bee, 0, 0, 75, 75);
+        pop();
+    }
+
+    drawC(targets) {
+        let d = Number.POSITIVE_INFINITY;
+        let closeTarget;
+        for(let target of targets) {
+            let dist = p5.Vector.dist(this.position, target);
+            if(dist < d) {
+                d = dist;
+                closeTarget = target;
+            }
+        }
+
+        d = map(d, 0, 150, 255, 0);
+        let r;
+        let g;
+        let b;
+        if(closeTarget.x === 100 && closeTarget.y === 100) {
+            r = d;
+            g = 0;
+            b = 0;
+        } else if(closeTarget.x === 100 && closeTarget.y === 700) {
+            r = 0;
+            g = d;
+            b = 0;
+        } else if(closeTarget.x === 700 && closeTarget.y === 100) {
+            r = 0;
+            g = 0;
+            b = d;
+        } else if(closeTarget.x === 700 && closeTarget.y === 700) {
+            r = d;
+            g = 0;
+            b = d;
+        } else {
+            r = 0;
+            g = d;
+            b = d;
+        }
+
+        push();
+        translate(this.position.x, this.position.y);
+        stroke(r, g, b);
+        strokeWeight(2);
+        point(0,0);
         pop();
     }
 
