@@ -1,11 +1,5 @@
 /*
-CS467 - Practical 04
-
-In this practical, we are exploring the world of noise.
-
-You will again create a "walker" that explores the canvas, but this time it
-will use a noise field to guide its progress about the space.
-
+More interesting walkers
 */
 
 const NUM_ANTS = 7500;

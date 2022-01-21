@@ -1,8 +1,5 @@
 /*
-CS467 - Assignment Three: Markov Image Generation
-
-@name Alex Merrill
-
+Markov Chain image scrambler
 */
 
 let drawSelector;
@@ -125,7 +122,6 @@ function draw() {
 /**
 * This handles the image file submitted by the user.
 *
-* @param {file} file The file returned from the file input control
 */
 function handleFile(file) {
     markovChain = null; // clear the data

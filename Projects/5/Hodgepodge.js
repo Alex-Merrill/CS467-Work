@@ -2,7 +2,6 @@
 * This function returns a collection of cells representing a cellular
 * automata
 *
-* @param {int} cellSize the display size of a cell
 */
 function hodge(cellSize, paintedH){
 
@@ -98,5 +97,5 @@ function hodge(cellSize, paintedH){
 }
 
 // Make this CA available
-// it will show up in the options as 'Game of Life'
+// it will show up in the options as 'Hodgepodge'
 CA_COLLECTION.set('Hodgepodge', hodge);

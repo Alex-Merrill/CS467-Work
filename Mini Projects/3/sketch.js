@@ -1,9 +1,5 @@
 /*
-CS467 - Practical 03
-
-This sketch is all about random walks. You will build a basic random walker and then
-jazz it up to make a collection of wandering comets.
-
+This is a sketch featuring many creatures walking around the canvas.
 */
 
 const NUM_CREATURES = 100;

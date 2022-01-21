@@ -1,8 +1,6 @@
 /**
 * This function returns a collection of cells representing a cellular
 * automata
-*
-* @param {int} cellSize the display size of a cell
 */
 function ant(cellSize, paintedH){
 
@@ -114,5 +112,5 @@ function ant(cellSize, paintedH){
 }
 
 // Make this CA available
-// it will show up in the options as 'Game of Life'
+// it will show up in the options as 'Langton's Ant'
 CA_COLLECTION.set("Langton's Ant", ant);

@@ -1,14 +1,5 @@
 /*
-CS467 - Assignment Two: Image Mosaic
-
-@name Alex Merrill
-
-*/
-
-
-/**
-* p5.js setup() function.
-*
+Image Mosaic
 */
 
 const CELL_SIZE = 50;
@@ -44,12 +35,6 @@ function setup() {
 
 }
 
-/**
-* The p5.js draw() function.
-*
-* This should handle the drawing of the sketch. Use redraw() to
-* request the screen be refreshed.
-*/
 function draw(){
     //clears canvas and sets background
     clear();

@@ -1,8 +1,5 @@
 /*
-  CS467 - Assignment Six: Social Distancing
-
-  @name Alex Merrill
-
+	Bees like to stay away from too many others
 */
 
 const NUM_AGENTS = 20;

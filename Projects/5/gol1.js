@@ -2,7 +2,6 @@
 * This function returns a collection of cells representing a cellular
 * automata
 *
-* @param {int} cellSize the display size of a cell
 */
 function gol1(cellSize, paintedH){
 
@@ -96,5 +95,5 @@ function gol1(cellSize, paintedH){
 }
 
 // Make this CA available
-// it will show up in the options as 'Game of Life'
+// it will show up in the options as 'Game of Life B36/S23'
 CA_COLLECTION.set('Game Of Life B36/S23', gol1);

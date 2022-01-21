@@ -1,8 +1,5 @@
 /*
-CS467 - Practical 02
-
 This sketch is an exploration of repetition. When finished, it will draw a web of lines across the canvas which follow the mouse.
-
 */
 
 const can = 700;

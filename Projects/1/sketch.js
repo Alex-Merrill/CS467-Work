@@ -1,8 +1,5 @@
 /*
-  CS467 - Assignment One: Tartan Viewer
-
-  @name Alex Merrill
-
+Tartan Viewer
 */
 
 //map color codes to RGB values
@@ -37,12 +34,7 @@ const colors = {
 const colorList = ["LR", "R", "DR", "O", "DO", "LY", "Y", "DY", "LG", "G", "DG", "LB",
                   "B", "DB", "LP", "P", "DP", "W", "LN", "N", "DN", "K", "LT", "T", "DT"];
 
-/**
- * p5.js setup() function.
- *
- * This function creates the very bare-bones user interface (a text entry box and a button).
- * You are welcome to adjust/improve as you see fit. I provided this code to give you an alternative model to the draw() based run loop.
- */
+
 function setup() {
   createCanvas(900, 900);
 
@@ -57,14 +49,6 @@ function setup() {
 }
 
 
-
-/**
- * Parse the input string as a tartan pattern and draw it.
- *
- *
- *
- * @param {str} threadString
- */
 function handleInput(threadString){
   //clears canvas
   clear();

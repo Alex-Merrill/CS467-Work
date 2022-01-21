@@ -1,8 +1,6 @@
 /**
 * This function returns a collection of cells representing a cellular
 * automata
-*
-* @param {int} cellSize the display size of a cell
 */
 function gameOfLife(cellSize, paintedH){
 
